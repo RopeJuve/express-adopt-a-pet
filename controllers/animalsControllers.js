@@ -1,17 +1,24 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import { getTypes, getAnimalById, getAnimalsByType } from '../petList.js';
 
 export const getIndexHTML = (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/index.html'));
+    const petKeys = getTypes();
+    res.render('index', { title: 'Adopt a Pet', petKeys });
 };
 
 export const getAnimalsHTML = (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/animals.html'));
+    const petsType = getAnimalsByType(req.params.animal);
+    if (!petsType) {
+        res.status(404).render('404Error', { title: 'Page Not Found' });
+        return;
+    }
+    res.render('animals', { title: req.params.animal, petsType });
 }
 
 export const getAnimalHTML = (req, res) => {
-    res.sendFile(path.join(__dirname, '../public/animal.html'));
+    const pet = getAnimalById(req.params.animal, req.params.id);
+    if (!pet) {
+        res.status(404).render('404Error', { title: 'Page Not Found' });
+        return;
+    }
+    res.render('animal', { title: 'Adopt Me', pet, petType: req.params.animal });
 }

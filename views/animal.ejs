@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animals</title>
+    <link rel="stylesheet" href="../../index.css" />
+</head>
+
+<body class="container">
+    <h1>Animal</h1>
+    <div class="navigation">
+        <a href="/"><-home</a>/<a href="/animals/<%= petType %>">
+                    <%= petType %>
+                </a>
+    </div>
+    <div class="pet-content">
+        <img id="pet-image" src="<%= pet.url %>" alt="pet" />
+        <div class="pet-info">
+            <h2 id="pet-name">
+                <%= pet.name %>
+            </h2>
+            <p id="pet-breed"><span>Breed: </span>
+                <%= pet.breed %>
+            </p>
+            <p id="pet-age"><span>Age: </span>
+                <%= pet.age %> years
+            </p>
+            <p id="description"><span>Description: </span>
+                <%= pet.description %>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

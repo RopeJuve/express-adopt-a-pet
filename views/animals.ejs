@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Animals</title>
+  <link rel="stylesheet" href="../index.css" />
+</head>
+
+<body class="container">
+  <h1 id="title">
+    <%= title.charAt(0).toUpperCase() + title.slice(1) %> Page
+  </h1>
+  <div class="navigation"> <a href="/"><-home</a></div>
+  <ul id="pet-list">
+    <% petsType.forEach( (pet, index)=> {%>
+      <li class="cart">
+        <a href="/animals/<%= title %>/<%= index + 1 %>">
+          <h2>
+            <%=pet.name %>
+          </h2>
+          <div class="cart-content">
+            <img src="<%=pet.url%>" alt="<%=pet.name%>" />
+            <div class="cart-info">
+              <span>Description</span>
+              <p>
+                <%=pet.description%>
+              </p>
+              <span>Age: <%=pet.age%></span>
+            </div>
+          </div>
+
+        </a>
+      </li>
+      <% }); %>
+  </ul>
+</body>
+
+</html>

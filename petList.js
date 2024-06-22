@@ -23,7 +23,7 @@ const pets = {
         breed: 'Tabby',
         description:
           'Snowflake is a playful kitten who loves roaming the house and exploring.',
-        url: 'http://placekitten.com/500/500',
+        url: 'https://loremflickr.com/320/240/cat?lock=7',
       },
     ],
     rabbits: [
@@ -33,9 +33,21 @@ const pets = {
         breed: 'Mini Rex',
         description:
           'Easter is a sweet, gentle rabbit who likes spending most of the day sleeping.',
-        url: 'https://loremflickr.com/320/240/rabbit?lock=7',
+        url: 'https://loremflickr.com/320/240/rabbit?lock=4',
       },
     ],
   };
+
+  export const getTypes = () => {
+    return Object.keys(pets);
+  };
+
+  export const getAnimalsByType = (type) => {
+    return pets[type];
+};
+
+  export const getAnimalById = (type, id) => {
+    return pets[type][id - 1];
+  }
   
   export default  pets;
